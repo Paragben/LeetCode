@@ -1,0 +1,24 @@
+Here is my code for  question 1. TWO SUM(Easy) :
+
+      class Solution {
+          public int[] twoSum(int[] nums, int target) {
+              int N=nums.length;
+              int[] A= new int[2];
+              for(int s=0; s<N;s++){
+                  for(int k=s+1;k<N;k++){
+                      int sum=nums[s]+nums[k];
+                      if(sum==target){
+                          A[0]=s;
+                          A[1]=k;
+                          return A;
+                      }
+                  }
+
+              }
+
+              return A;
+          }
+      }
+      
+Link to access my CODE:
+https://leetcode.com/problems/two-sum/submissions/951895790/
