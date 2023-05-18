@@ -1,0 +1,31 @@
+4. Median of Two Sorted Arrays(Hard): Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays. 
+The overall run time complexity should be O(log (m+n)).
+    class Solution {
+        public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+            int x=nums1.length;
+            int y=nums2.length;
+            int[] c = new int[x+y]; 
+            int sum=x+y;
+            int a,b=0;
+            a=sum/2;
+            b=(sum/2)-1; 
+            System.arraycopy(nums1, 0, c, 0, x);
+            System.arraycopy(nums2, 0, c, x, y);
+
+            Arrays.sort(c);
+
+            double d;
+            if(sum%2==0){
+                d=(c[a]+c[b])/2.00;
+            }
+            else{
+                d=c[a];
+            }
+        return d;
+        }
+    }
+    
+    Heres the Link to my solution:
+    https://leetcode.com/problems/median-of-two-sorted-arrays/submissions/952564695/
+    
+    
