@@ -82,3 +82,35 @@ The matching should cover the entire input string (not partial).
         }
 Heres the Link to my solution:
 https://leetcode.com/problems/regular-expression-matching/submissions/953130006/
+
+23. Merge k Sorted Lists(Hard):You are given an array of k linked-lists lists, each linked-list is sorted in ascending order. Merge all the linked-lists into one sorted linked-list and return it.
+        class Solution {
+            public ListNode mergeKLists(ListNode[] lists) {
+                ListNode dummyHead = new ListNode();
+
+                // try pq
+                PriorityQueue<ListNode> pq = new PriorityQueue<ListNode>((a, b) -> a.val - b.val);
+
+                for (int i = 0; i < lists.length; i++) {
+                    ListNode cp = lists[i];
+
+
+                    while (cp != null) {    
+                        pq.add(cp);
+                        ListNode next = cp.next;
+                        cp.next = null;
+                        cp = next;
+                    }
+                }
+
+                ListNode dp = dummyHead;
+                while (pq.isEmpty() == false) {
+                    dp.next = pq.poll();
+                    dp = dp.next;
+                }
+
+                return dummyHead.next;
+            }
+        }
+ https://leetcode.com/problems/merge-k-sorted-lists/submissions/954331006/
+ 
