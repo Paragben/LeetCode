@@ -50,3 +50,66 @@ This test-values have invalid test cases for x:
 1534236469, 1563847412 and -1563847412
 Because all these numbers are within the required range [-2^31 ; 2^31 -1] 
 
+
+2. AddTwoNumbers(Medium): You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum as a linked list. 
+      class Solution {
+          public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+              ListNode dummy=new ListNode(0);
+              ListNode curr=dummy;
+              int carry=0;
+
+              while(l1 != null || l2 != null || carry == 1){
+                  int sum = 0; 
+                  if(l1 != null){ 
+                      sum += l1.val;
+                      l1 = l1.next;
+                  }
+                  if(l2 != null){ 
+                      sum += l2.val;
+                      l2 = l2.next;
+                  }
+                  sum += carry; 
+                  carry = sum/10; 
+                  ListNode node = new ListNode(sum % 10); 
+                  curr.next = node; 
+                  curr = curr.next; 
+              }
+              return dummy.next; 
+
+          }
+      }
+      
+Link to access my Solution:
+https://leetcode.com/problems/add-two-numbers/submissions/952015827/ 
+
+3. Longest Substring Without Repeating Characters(Medium): Given a string s, find the length of the longest substring without repeating characters.
+ 
+      class Solution {
+          public int lengthOfLongestSubstring(String s) {
+              Set<Character>set=new HashSet<>();
+              int maxLength=0;
+              int left=0;
+              for(int right=0;right<s.length();right++){
+
+                  if(!set.contains(s.charAt(right))){
+                      set.add(s.charAt(right));
+                      maxLength=Math.max(maxLength,right-left+1);
+
+                  }else{
+                      while(s.charAt(left)!=s.charAt(right)){
+                          set.remove(s.charAt(left));
+                          left++;
+                      }
+                      set.remove(s.charAt(left));left++;
+                      set.add(s.charAt(right));
+                  }
+
+              }
+              return maxLength;
+          }
+      }
+      
+Link to access my Solution:
+https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/952516919/ 
+
+
